@@ -4,7 +4,7 @@ Similar to Question [1. Two Sum], except that the input array is already sorted 
 
 class TwoSum2 {
 
-	public static int[] twoSum1(int[] numbers, int target) {
+    public static int[] twoSum1(int[] numbers, int target) {
         // numbers is sorted 
         // O(n log n) runtime, O(1) space
         for (int i = 0; i <= numbers.length; i++) {
@@ -32,17 +32,17 @@ class TwoSum2 {
     }
 
     public static int[] twoSum2(int[] numbers, int target) {
-    	// O(n) runtime, O(1) space
+        // O(n) runtime, O(1) space
         int i = 0, j = numbers.length - 1;
         while (i < j) {
-        	int sum = numbers[i] + numbers[j];
-        	if (sum < target) {
-	            i++;
-	        } else if (sum > target) {
-	        	j--;
-	        } else {
-	        	return new int[] { i + 1, j + 1 };
-	        }
+            int sum = numbers[i] + numbers[j];
+            if (sum < target) {
+                i++;
+            } else if (sum > target) {
+                j--;
+            } else {
+                return new int[] { i + 1, j + 1 };
+            }
         }
         throw new IllegalArgumentException("No two sum solution");
     }
