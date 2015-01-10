@@ -30,7 +30,6 @@ class StrStr {
         testCases.put("a", "");
         testCases.put("", "");
         testCases.put("asdfg", "jkl");
-        
         Iterator iter = testCases.entrySet().iterator();
         while (iter.hasNext()) {
             Map.Entry entry = (Map.Entry) iter.next();
