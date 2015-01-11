@@ -1,4 +1,6 @@
-/*Similar to Question [1. Two Sum], except that the input array is already sorted in ascending order.*/
+/*
+Similar to Question [1. Two Sum], except that the input array is already sorted in ascending order.
+*/
 
 class TwoSum2 {
 
