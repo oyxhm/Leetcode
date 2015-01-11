@@ -8,7 +8,7 @@ class TwoSum {
 
     public static int[] twoSum(int[] numbers, int target) {
         // O(n) runtime, O(n) space
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < numbers.length; i++) {
             int x = numbers[i];
             if (map.containsKey(target - x)) {

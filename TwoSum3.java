@@ -11,7 +11,7 @@ class TwoSum3 {
 	// find: O(n) runtime
 	// O(n) space	
 
-	private static Map<Integer, Integer> map = new HashMap<>();
+	private static Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
 	public static void add(int input) {
 		int count = map.containsKey(input)? map.get(input) : 0;
