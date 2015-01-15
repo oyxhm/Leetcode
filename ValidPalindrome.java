@@ -28,7 +28,7 @@ class ValidPalindrome {
     public static void main(String[] args) {
         String[] testCases = {"abcba", "a Bcba", "a  b  cb   A", "a1 2a21a", " ", ""};
         for (String s : testCases) {
-            System.out.printf("%s is %b%n", s, isValidPalindrome(s));   
+            System.out.printf("%s is %b%n", s, isValidPalindrome(s));
         }
     }
 }
