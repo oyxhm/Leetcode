@@ -23,7 +23,7 @@ class RotateArrayByK {
     public static void main(String[] args) {
         int[] testCase = {0 ,1, 2, 3, 4, 5, 6};
         rotateArrayByK(testCase, 3);
-        for g(int i = 0; i < testCase.length; i++) {
+        for (int i = 0; i < testCase.length; i++) {
             if (i != 0) {
                 System.out.printf(", ");
             }
