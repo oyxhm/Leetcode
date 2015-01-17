@@ -19,39 +19,39 @@ maximum integer value (2147483647) or the minimum integer value (–2147483648) 
 */
 
 class StringToInteger {
-	private static final int BASE = 10, MAX = Integer.MAX_VALUE / 10;
+    private static final int BASE = 10, MAX = Integer.MAX_VALUE / 10;
 
-	public static int atoi(String s) {
-		int ret = 0, i = 0, len = s.length();
-		boolean isPositive = true;
+    public static int atoi(String s) {
+        int ret = 0, i = 0, len = s.length();
+        boolean isPositive = true;
 
-		while (s.charAt(i) == ' ' && i < len) {
-			i++;
-		}
-		if (i < len && s.charAt(i) == '-') {
-			isPositive = false;
-			i++;
-		}
-		if (i < len && s.charAt(i) == '+') {
-			i++;
-		}
-		while (i < len && Character.isDigit(s.charAt(i))) {
-			int digit = Character.getNumericValue(s.charAt(i));
-			if (ret > MAX || ret == MAX && digit >= 8) {
-				return isPositive? Integer.MAX_VALUE : Integer.MIN_VALUE;
-			}
-			ret = digit + ret * BASE;
-			i++;
-		}
-		return ret * (isPositive? 1 : -1);
-	}
+        while (s.charAt(i) == ' ' && i < len) {
+            i++;
+        }
+        if (i < len && s.charAt(i) == '-') {
+            isPositive = false;
+            i++;
+        }
+        if (i < len && s.charAt(i) == '+') {
+            i++;
+        }
+        while (i < len && Character.isDigit(s.charAt(i))) {
+            int digit = Character.getNumericValue(s.charAt(i));
+            if (ret > MAX || ret == MAX && digit >= 8) {
+                return isPositive? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+            ret = digit + ret * BASE;
+            i++;
+        }
+        return ret * (isPositive? 1 : -1);
+    }
 
-	public static void main(String[] args) {
-		String[] testCases = { "-1234", "1234", "+1234", 
-							   "  -1234", "  1234", "  +1234",
-							   "  1234a", "123456789123456" };
-		for (String testCase : testCases) {
-			System.out.println(atoi(testCase));			
-		}
-	}
+    public static void main(String[] args) {
+        String[] testCases = { "-1234", "1234", "+1234", 
+                               "  -1234", "  1234", "  +1234",
+                               "  1234a", "123456789123456" };
+        for (String testCase : testCases) {
+            System.out.println(atoi(testCase));         
+        }
+    }
 }
