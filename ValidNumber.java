@@ -8,6 +8,8 @@ Some examples:
 ignore both leading and trailing whitespaces.
 If the string contains any non-numeric characters (excluding whitespaces and decimal point), it is not numeric.
 “+1” and “-1” are both numeric.
+A number could contain an optional exponent part, which is marked by a character ‘e’ followed by a whole number (exponent). 
+For example, “1e10” is numeric. 
 Feel free to work on the challenge that takes exponent into consideration.
 */
 
@@ -33,6 +35,17 @@ class ValidNumber {
                 isValidNumber = true;
             }
         }
+        if (isValidNumber && i > 0 && i < len && s.charAt(i) == 'e') {
+            i++;
+            isValidNumber = false;
+            if (i < len && (s.charAt(i) == '+' || s.charAt(i) == '-')) {
+                i++;  // handle positive and negative
+            }
+            while (i < len && Character.isDigit(s.charAt(i))) {
+                i++;
+                isValidNumber = true;
+            }
+        }
         while (i < len && Character.isWhitespace(s.charAt(i))) {
             i++;  // ignore trailing whitespaces
         }
@@ -40,7 +53,8 @@ class ValidNumber {
     }
 
     public static void main(String[] args) {
-        String[] testCases = {"1.23", ".12", "  .12", "  .12  ", "  .12.3 "};
+        String[] testCases = {"1.23", ".12", "  .12", "  .12  ", "  .12.3 ", ".1", 
+                              "e9", ".e9"};
         for (String testCase : testCases) {
             System.out.println(validNumber(testCase));
         }
