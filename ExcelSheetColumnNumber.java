@@ -10,6 +10,9 @@ For example:
     Z -> 26
     AA -> 27
     AB -> 28 
+    AAB -> 704
+    AAAB -> 18280
+    ACAB -> 19632
 */
 
 public class ExcelSheetColumnNumber {
@@ -25,6 +28,6 @@ public class ExcelSheetColumnNumber {
 		System.out.println(excelSheetColumnNumber("D"));
 		System.out.println(excelSheetColumnNumber("AA"));
 		System.out.println(excelSheetColumnNumber("AB"));
-		System.out.println(excelSheetColumnNumber("AAA"));
+		System.out.println(excelSheetColumnNumber("ACAB"));
 	}
 }
