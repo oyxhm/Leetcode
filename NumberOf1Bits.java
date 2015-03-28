@@ -5,24 +5,24 @@ For example, the 32-bit integer ’11' has binary representation 000000000000000
 */
 
 public class NumberOf1Bits {
-	// you need to treat n as an unsigned value
+    // you need to treat n as an unsigned value
     public static int hammingWeight(int n) {
-    	int count = 0;
-	    for(int i = 1; i < 33; i++){
-	        if(getBit(n, i) == true){
-	            count++;
-	        }
-	    }
-	    return count;
-	}
+        int count = 0;
+        for(int i = 1; i < 33; i++){
+            if(getBit(n, i) == true){
+                count++;
+            }
+        }
+        return count;
+    }
  
-	public boolean getBit(int n, int i){
-	    return (n & (1 << i)) != 0;
-	}
+    public boolean getBit(int n, int i){
+        return (n & (1 << i)) != 0;
+    }
 
-	public static void main(String[] args) {
-		System.out.println(hammingWeight(11));
-		System.out.println(hammingWeight(2147483648));
-	}
+    public static void main(String[] args) {
+        System.out.println(hammingWeight(11));
+        System.out.println(hammingWeight(2147483648));
+    }
 }
 
