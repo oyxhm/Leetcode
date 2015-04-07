@@ -2,7 +2,7 @@
 * @Author: yhf
 * @Date:   2015-04-06 17:19:05
 * @Last Modified by:   yhf
-* @Last Modified time: 2015-04-06 17:36:59
+* @Last Modified time: 2015-04-07 23:10:09
 */
 
 public class LongestPalindromicSubstring {
@@ -16,6 +16,8 @@ public class LongestPalindromicSubstring {
 	}
 
 	public static String longestPalindrome(String s) {
+		// O(n^2) runtime, O(1) space.
+
 		if (s == "") {
 			return "";
 		}
@@ -32,12 +34,52 @@ public class LongestPalindromicSubstring {
 		return s.substring(left, right + 1);
 	}
 
+	public static String longestPalindrome2(String s) {
+		// dynamic programming
+		// O(n^2) runtime, O(n^2) space
+
+		if (s == "") {
+			return "";			
+		}
+		int len = s.length();
+		boolean[][] isPalindrome = new boolean[len][len];
+
+		for (int i = 0; i < len; i++) {
+			isPalindrome[i][i] = true;
+		}
+		int maxLength = 1;
+		int left = 0;
+
+		for (int i = 0; i < len - 1; i++) {
+			if (s.charAt(i) == s.charAt(i+1)) {
+				isPalindrome[i][i+1] = true;
+				maxLength = 2;
+				left = i;
+			}
+		}
+
+		for (int l = 3; l <= len; l++) {   // notice when l == len
+			for (int i = 0; i < len - l + 1; i++) {
+				int j = i + l - 1;
+				if (s.charAt(i) == s.charAt(j) && isPalindrome[i+1][j-1]) {
+					isPalindrome[i][j] = true;
+					maxLength = l;
+					left = i;
+				}
+			}
+		}
+		return s.substring(left, left + maxLength);
+	}
+
     public static void main(String[] args) {
     	String test1 = "hhhabcdcbaqqq";
-    	String test2 = "";
+    	String test2 = "ccc";
     	String test3 = "a";
     	System.out.println(longestPalindrome(test1));
     	System.out.println(longestPalindrome(test2));
     	System.out.println(longestPalindrome(test3));
+    	System.out.println(longestPalindrome2(test1));
+    	System.out.println(longestPalindrome2(test2));
+    	System.out.println(longestPalindrome2(test3));
     }
 }
