@@ -2,7 +2,7 @@
 * @Author: yhf
 * @Date:   2015-04-08 12:28:34
 * @Last Modified by:   yhf
-* @Last Modified time: 2015-04-08 13:14:01
+* @Last Modified time: 2015-03-28 18:41:52
 */
 
 /*
@@ -14,29 +14,29 @@ The brackets must close in the correct order, "()" and "()[]{}" are all valid bu
 import java.util.*;
 
 public class ValidParentheses {
-	public static boolean isValidParentheses(String s) {
-		Stack<Character> st = new Stack<Character>();
+    public static boolean isValidParentheses(String s) {
+        Stack<Character> st = new Stack<Character>();
 
-		HashMap<Character, Character> map = new HashMap<Character, Character>();
-			map.put('(', ')');
-			map.put('{', '}');
-			map.put('[', ']');
+        HashMap<Character, Character> map = new HashMap<Character, Character>();
+            map.put('(', ')');
+            map.put('{', '}');
+            map.put('[', ']');
 
-		for (char c : s.toCharArray()) {
-			if (map.containsKey(c)) {
-				st.push(c);
-			} else if (st.isEmpty() || map.get(st.pop()) != c){
-				return false;
-			}
-		}
-		return st.isEmpty();
-	}
+        for (char c : s.toCharArray()) {
+            if (map.containsKey(c)) {
+                st.push(c);
+            } else if (st.isEmpty() || map.get(st.pop()) != c){
+                return false;
+            }
+        }
+        return st.isEmpty();
+    }
 
     public static void main(String[] args) {
-    	System.out.println(isValidParentheses("("));
-    	System.out.println(isValidParentheses("(}"));
-    	System.out.println(isValidParentheses("()"));
-    	System.out.println(isValidParentheses("())"));
-    	System.out.println(isValidParentheses("(]]]"));
+        System.out.println(isValidParentheses("("));
+        System.out.println(isValidParentheses("(}"));
+        System.out.println(isValidParentheses("()"));
+        System.out.println(isValidParentheses("())"));
+        System.out.println(isValidParentheses("(]]]"));
     }
 }
