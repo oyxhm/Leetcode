@@ -16,13 +16,13 @@ public class NumberOf1Bits {
         return count;
     }
  
-    public boolean getBit(int n, int i){
+    public static boolean getBit(int n, int i){
         return (n & (1 << i)) != 0;
     }
 
     public static void main(String[] args) {
         System.out.println(hammingWeight(11));
-        System.out.println(hammingWeight(2147483648));
+        // System.out.println(hammingWeight(2147483648));
     }
 }
 
