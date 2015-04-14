@@ -73,6 +73,31 @@ public class AddTwoNumbers {
         return ret.next;
     }
 
+    public static ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        int carry = 0;
+        ListNode n1 = l1, n2 = l2, head = new ListNode(0), ret = head;
+        while (n1 != null || n2 != null) {
+            int num = 0;
+            if (n1 != null) {
+                num += n1.val;
+                n1 = n1.next;
+            }
+            if (n2 != null) {
+                num += n2.val;
+                n2 = n2.next;
+            }
+            num += carry;
+            carry = num / 10;
+            ListNode n = new ListNode(num % 10);
+            head.next = n;
+            head = head.next;
+        }
+        if (carry == 1) {
+            head.next = new ListNode(1);
+        }
+        return ret.next;
+    }
+
     public static void main(String[] args) {
         ListNode n1 = new ListNode(2);
         ListNode n2 = new ListNode(4);
@@ -84,7 +109,7 @@ public class AddTwoNumbers {
         n4.next = n5;
         n5.next = n6;
         n6.next = n7;
-        ListNode n = addTwoNumbers(n1, n4);
+        ListNode n = addTwoNumbers2(n1, n4);
         int a = 1;
     }
 }
