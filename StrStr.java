@@ -7,15 +7,17 @@ import java.util.*;
 
 class StrStr {
     public static int strStr(String haystack, String needle) {
+        // 因为内循环里，至少肯定会达到j == needle.length的条件，
+        // 所以最后不用return语句
         for (int i = 0; ; i++) {
             for (int j = 0; ; j++) {
                 if (j == needle.length()) { 
                     return i;
                 }
                 if (i + j == haystack.length()) {
-                    return j;
+                    return -1;
                 }
-                if (haystack.charAt(i) != needle.charAt(j)) {
+                if (haystack.charAt(i + j) != needle.charAt(j)) {
                     break;
                 }
             }
@@ -23,19 +25,11 @@ class StrStr {
     }
 
     public static void main(String[] args) {
-        Map<String, String> testCases = new HashMap<String, String>();
-        testCases.put("abbbc", "bb");
-        testCases.put("ascw", "w");
-        testCases.put("", "a");
-        testCases.put("a", "");
-        testCases.put("", "");
-        testCases.put("asdfg", "jkl");
-        Iterator iter = testCases.entrySet().iterator();
-        while (iter.hasNext()) {
-            Map.Entry entry = (Map.Entry) iter.next();
-            String haystack = (String) entry.getKey();
-            String needle   = (String) entry.getValue();
-            System.out.printf("%s %s %d%n", haystack, needle, strStr(haystack, needle));
-        }
+        System.out.println(strStr("", "a"));
+        System.out.println(strStr("abbbc", "bb"));
+        System.out.println(strStr("ascw", "w"));
+        System.out.println(strStr("a", ""));
+        System.out.println(strStr("", ""));
+        System.out.println(strStr("asdfg", "weq"));
     }
 }
