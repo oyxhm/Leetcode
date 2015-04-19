@@ -28,9 +28,11 @@ If S = [1,2,3], a solution is:
 */
 
 // reference: http://blog.csdn.net/u011095253/article/details/9158397
+//            http://mattcb.blogspot.com/2012/11/subset-i-ii.html
 
 public class Subsets {
     public static List<List<Integer>> subsets(int[] S) {
+        // dfs
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         List<Integer> temp = new ArrayList<Integer>();
         Arrays.sort(S);
@@ -49,8 +51,24 @@ public class Subsets {
         }
     }
 
+    public static List<List<Integer>> subsets2(int[] S) {
+        // bfs
+        Arrays.sort(S);
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        res.add(new ArrayList<Integer>());
+        for (int n : S) {
+            List<List<Integer>> tempRes = new ArrayList<List<Integer>>(res);
+            for (List<Integer> subset : tempRes) {
+                List<Integer> tempSubset = new ArrayList<Integer>(subset);
+                tempSubset.add(n);
+                res.add(tempSubset);
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         int[] S = {1, 2, 3};
-        List<List<Integer>> res = subsets(S);
+        List<List<Integer>> res = subsets2(S);
     }
 }
