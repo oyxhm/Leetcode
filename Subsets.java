@@ -27,6 +27,8 @@ If S = [1,2,3], a solution is:
 ]
 */
 
+// reference: http://blog.csdn.net/u011095253/article/details/9158397
+
 public class Subsets {
     public static List<List<Integer>> subsets(int[] S) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
