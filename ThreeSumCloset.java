@@ -39,6 +39,5 @@ public class ThreeSumCloset {
     public static void main(String[] args) {
         int[] nums = {1, 2, 4, 8, 16, 32, 64, 128};
         System.out.println(threeSumClosest(nums, 82));
-        int a = 0;
     }
 }
