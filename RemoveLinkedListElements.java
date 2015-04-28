@@ -41,6 +41,5 @@ public class RemoveLinkedListElements {
         n5.next = n6;
         n6.next = n7;
         ListNode node = removeElements(n1, 6);
-        int a = 0;
     }
 }
