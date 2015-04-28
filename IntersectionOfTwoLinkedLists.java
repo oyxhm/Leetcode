@@ -11,15 +11,6 @@ B:     b1 → b2 → b3
 begin to intersect at node c1.
 */
 
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) {
-        val = x;
-        next = null;
-    }
-}
-
 public class IntersectionOfTwoLinkedLists {
     public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode nodeA = headA, nodeB = headB;
