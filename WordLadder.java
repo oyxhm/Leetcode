@@ -30,8 +30,7 @@ All words contain only lowercase alphabetic characters.
 
 public class WordLadder {
     public static int ladderLength(String beginWord, String endWord, Set<String> wordDict) {
-        if (beginWord == null || endWord == null || beginWord.equals("") || endWord.equals("")
-                || beginWord.length() != endWord.length()) {
+        if (beginWord == null || endWord == null || beginWord.equals("") || endWord.equals("")) {
             return 0;
         }
         Queue<String> queue = new LinkedList<String>();
