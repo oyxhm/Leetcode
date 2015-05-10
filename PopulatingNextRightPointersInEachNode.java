@@ -44,7 +44,7 @@ class TreeLinkNode {
 
 public class PopulatingNextRightPointersInEachNode {
     public static void connect(TreeLinkNode root) {
-        // recursively
+        // recursively, DFS
         if (root == null) {
             return;
         }
@@ -59,34 +59,29 @@ public class PopulatingNextRightPointersInEachNode {
     }
 
     public static void connect2(TreeLinkNode root) {
-        // iteratively
-        if (root == null || root.left == null) {
+        // iteratively, BFS
+        if (root == null) {
             return;
         }
-        Queue<TreeLinkNode> queue = new LinkedList<TreeLinkNode>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            if (size == 1) {  // 注意第一层要单独处理
-                root = queue.remove();
-                queue.add(root.left);
-                queue.add(root.right);
-                continue;
-            }
-            TreeLinkNode pre = queue.remove();
+        Queue<TreeLinkNode> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            TreeLinkNode pre = q.remove();
             if (pre.left != null) {
-                queue.add(pre.left);
-                queue.add(pre.right);
+                q.add(pre.left);
+                q.add(pre.right);
             }
             for (int i = 1; i < size; i++) {
-                TreeLinkNode node = queue.remove();
-                pre.next = node;
+                TreeLinkNode node = q.remove();
                 if (node.left != null) {
-                    queue.add(node.left);
-                    queue.add(node.right);
-                }
+                    q.add(node.left);
+                    q.add(node.right);
+                }gi
+                pre.next = node;
                 pre = node;
             }
+            pre.next = null;
         }
     }
 
