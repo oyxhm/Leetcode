@@ -31,17 +31,17 @@ class LongestSubstringWithoutRepeatingCharacters {
         int[] indexMap = new int[256];
         Arrays.fill(indexMap, -1);
         for (int j = 0; j < s.length(); j++) {
-            if (indexMap[s.charAt(j)] != -1) {
-                i = indexMap[s.charAt(j)];
+            if (indexMap[s.charAt(j)] >= i) {  // 注意这里，是大于等于i，不是大于-1
+                i = indexMap[s.charAt(j)] + 1;  // 一定要加1，想一下为什么
             }
             indexMap[s.charAt(j)] = j;
-            maxLen = Math.max(j - i, maxLen);
+            maxLen = Math.max(j - i + 1, maxLen);
         }
         return maxLen;
     }
 
     public static void main(String[] args) {
-        System.out.println(longestSubstring("aacsdeapoi"));
-        System.out.println(longestSubstring2("aacsdeapoi"));
+        System.out.println(longestSubstring("cdfe"));
+        System.out.println(longestSubstring2("cccc"));
     }
 }
