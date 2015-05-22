@@ -23,22 +23,18 @@ public class CombinationSum {
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<Integer> cur = new ArrayList<>();
         List<List<Integer>> res = new ArrayList<>();
-        Set<List<Integer>> resSet = new HashSet<>();
         if (candidates == null) {
             return res;
         }
         Arrays.sort(candidates);
-        dfs(candidates, target, 0, 0, cur, res, resSet);
+        dfs(candidates, target, 0, 0, cur, res);
         return res;
     }
 
-    public static void dfs(int[] candidates, int target, int idx, int curSum, List<Integer> cur, List<List<Integer>> res, Set<List<Integer>> resSet) {
+    public static void dfs(int[] candidates, int target, int idx, int curSum, List<Integer> cur, List<List<Integer>> res) {
         if (curSum == target) {
-            if (!resSet.contains(cur)) {
-                List<Integer> l = new ArrayList<Integer>(cur);
-                resSet.add(l);
-                res.add(l);
-            }
+            List<Integer> l = new ArrayList<Integer>(cur);
+            res.add(l);
             return;
         }
 
@@ -48,7 +44,7 @@ public class CombinationSum {
 
         for (int i = idx; i < candidates.length; i++) {
             cur.add(candidates[i]);
-            dfs(candidates, target, i, curSum + candidates[i], cur, res, resSet);
+            dfs(candidates, target, i, curSum + candidates[i], cur, res);
             cur.remove(cur.size() - 1);
         }
     }
