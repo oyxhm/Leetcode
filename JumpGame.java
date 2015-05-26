@@ -13,6 +13,16 @@ For example:
 A = [2,3,1,1,4], return true.
 
 A = [3,2,1,0,4], return false.
+
+
+http://www.lifeincode.net/programming/leetcode-jump-game-and-jump-game-ii-java/
+
+In Jump Game, we can save the farthest position we can reach when we go through the array.
+Every time we move, we will decrease the step. When we updating it, the step remaining for us is also updated.
+For example, for array A = [2, 3, 1, 1, 4], when we visit A[0], we update the maxReach to 2, and step to 2.
+When we visit A[1], we update maxReach to 1 + 3 = 4. And step is updated to 3. We will continue doing this until
+we reach the end or step getting to zero. If step getting to zero before we reach the end, it means that we can’t
+move forward so that we should return false.
 */
 
 public class JumpGame {
