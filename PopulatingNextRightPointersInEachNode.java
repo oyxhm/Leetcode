@@ -77,7 +77,7 @@ public class PopulatingNextRightPointersInEachNode {
                 if (node.left != null) {
                     q.add(node.left);
                     q.add(node.right);
-                }gi
+                }
                 pre.next = node;
                 pre = node;
             }
