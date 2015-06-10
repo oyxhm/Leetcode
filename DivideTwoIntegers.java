@@ -6,6 +6,14 @@
 Divide two integers without using multiplication, division and mod operator.
 
 If it is overflow, return MAX_INT.
+
+Shift can be used to solve this problem. We shift the divisor left until it just smaller than
+dividend but if we keep shifting one more bit, it’s larger than dividend. Than we can add the
+shifted value to the result and subtract the shifted value from dividend. Keep doing this until
+dividend is smaller than divisor. In fact, every integer can be represented by a set of base 2
+so that shifting can be used.
+
+http://www.lifeincode.net/programming/leetcode-divide-two-integers-java/
 */
 
 public class DivideTwoIntegers {
@@ -37,6 +45,6 @@ public class DivideTwoIntegers {
     }
 
     public static void main(String[] args) {
-        int a = divide(1, -1);
+        int res = divide(1, -1);
     }
 }
