@@ -23,9 +23,10 @@ public class CountCompleteTreeNodes {
     public static int countNodes2(TreeNode root) {
         int height = height(root);
         double count = Math.pow(2, height) - 1;
+        int leftHeight = height - 1;  // 左边的高度
         height -= 2;
         while (root != null) {
-            if (height(root.left) == height(root.right)) {
+            if (leftHeight-- == height(root.right)) { // 每次左边的高度不用重新算，即为父节点的高度减一
                 root = root.right;
             } else {
                 root = root.left;
