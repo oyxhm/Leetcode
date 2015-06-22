@@ -17,20 +17,20 @@ from TreeNode import TreeNode
 
 class Solution:
 
-    def __init__(self):
+    # @param {TreeNode} root
+    # @return {integer[]}
+    def inorderTraversal(self, root):
+
         self.__traversal = list()
 
-    def inorderTraversalDFS(self, root):
-        # @param {TreeNode} root
-        # @return {integer[]}
-        if not root:
-            return
-        self.inorderTraversalDFS(root.left)
-        self.__traversal.append(root.val)
-        self.inorderTraversalDFS(root.right)
+        def __inorderTraversal(root):
+            if not root:
+                return
+            __inorderTraversal(root.left)
+            self.__traversal.append(root.val)
+            __inorderTraversal(root.right)
 
-    def inorderTraversal(self, root):
-        self.inorderTraversalDFS(root)
+        __inorderTraversal(root)
         return self.__traversal
 
     def inorderTraversalBFS(self, root):
@@ -67,4 +67,4 @@ if __name__ == '__main__':
     n4.left = n8
 
     s = Solution()
-    print s.inorderTraversalBFS(n1)
+    assert s.inorderTraversalBFS(n1) == [8, 4, 2, 5, 1, 6, 3, 7]

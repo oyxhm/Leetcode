@@ -17,21 +17,21 @@ from TreeNode import TreeNode
 
 class Solution:
 
-    def __init__(self):
+    # @param {TreeNode} root
+    # @return {integer[]}
+    def preorderTraversal(self, root):
         self.__traversal = list()
 
-    def preorderTraversalDFS(self, root):
-        # @param {TreeNode} root
-        # @return {integer[]}
-        if not root:
-            return
-        self.__traversal.append(root.val)
-        self.preorderTraversalDFS(root.left)
-        self.preorderTraversalDFS(root.right)
+        def __preorderTraversal(root):
+            if not root:
+                return
+            self.__traversal.append(root.val)
+            __preorderTraversal(root.left)
+            __preorderTraversal(root.right)
 
-    def preorderTraversal(self, root):
-        self.preorderTraversalDFS(root)
+        __preorderTraversal(root)
         return self.__traversal
+
 
     def preorderTraversalBFS(self, root):
         stack = []
