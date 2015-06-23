@@ -101,7 +101,7 @@ public class WordSearch2 {
         if (i < 0 || i >= m || j < 0 || j >= n || visited.contains(entry)) {
             return;
         }
-        cur += board[i][j];
+        cur += board[i][j];  // 注意这里不用backtrack，因为后面直接用Trie.search了
         if (!t.startsWith(cur)) {
             return;
         }
