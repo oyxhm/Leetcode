@@ -29,6 +29,10 @@ All words contain only lowercase alphabetic characters.
 */
 
 public class WordLadder2 {
+    /* To do
+    * BFS to meet run time requirement
+    * */
+
     // Time Limit Exceeded, not Accepted.
     public static List<List<String>> findLadders(String start, String end, Set<String> dict) {
         List<List<String>> res = new ArrayList<List<String>>();
