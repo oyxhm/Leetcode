@@ -15,9 +15,7 @@ class Solution:
     # @param {integer} n
     # @return {integer}
     def uniquePaths(self, m, n):
-        dp = []
-        for _ in xrange(m):
-            dp.append([1] * n)
+        dp = [[1] * n for _ in xrange(m)]
         for i in xrange(1, m):
             for j in xrange(1, n):
                 dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
