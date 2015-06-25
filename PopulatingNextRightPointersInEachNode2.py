@@ -90,4 +90,3 @@ if __name__ == '__main__':
 
     s = Solution()
     s.connectDFS(n1)
-    a = 1
