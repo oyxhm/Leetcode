@@ -29,37 +29,35 @@ class Solution:
     # @return a list of lists of string
     def solveNQueens(self, n):
 
-        self.__res = []
+        res = []
 
         def __solveNQueensDFS(n, rows):
             if len(rows) == n:
                 temp = copy.deepcopy(rows)
-                self.__res.append(temp)
+                res.append(temp)
             else:
                 for i in xrange(n):
                     can_put_col_i = True  # can put at (len(rows), i)?
                     for idx, pos in enumerate(rows):
-                        if not valid(idx, pos, len(rows), i):
+                        if not __valid(idx, pos, len(rows), i):
                             can_put_col_i = False
                             break
                     if can_put_col_i:
-                        rows.append(i)
-                        __solveNQueensDFS(n, rows)
-                        rows.pop()
+                        __solveNQueensDFS(n, rows + [i])
 
-        def valid(x1, y1, x2, y2):
+        def __valid(x1, y1, x2, y2):
             return y1 != y2 and abs(x2 - x1) != abs(y2 - y1)
 
         __solveNQueensDFS(n, [])
-        res = []
-        for solution in self.__res:
+        ret = []
+        for solution in res:
             new_solution = []
             for col in solution:
                 init_row = '.' * n
                 row = init_row[:col] + 'Q' + init_row[col+1:]
                 new_solution.append(row)
-            res.append(new_solution)
-        return res
+            ret.append(new_solution)
+        return ret
 
 
 if __name__ == '__main__':

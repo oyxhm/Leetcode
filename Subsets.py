@@ -24,20 +24,18 @@ class Solution:
     # @param {integer[]} nums
     # @return {integer[][]}
     def subsets(self, nums):
-        self.__res = []
+        res = []
         nums.sort()
 
         def __subsets(idx, cur):
             if idx == len(nums):
-                self.__res.append(list(cur))
+                res.append(cur)
                 return
-            cur.append(nums[idx])
-            __subsets(idx + 1, cur)
-            cur.pop()
-            __subsets(idx + 1, cur)
+            __subsets(idx + 1, cur+[nums[idx]])
+            __subsets(idx + 1, list(cur))
 
         __subsets(0, [])
-        return self.__res
+        return res
 
     def subsetsBFS(self, nums):
         res = [[]]

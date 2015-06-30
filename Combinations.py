@@ -20,23 +20,21 @@ class Solution:
     # @param {integer} k
     # @return {integer[][]}
     def combine(self, n, k):
-        self.__res = []
+        res = []
         if n <= 0 or k <= 0:
-            return self.__res
+            return res
 
         def __combine(cur, idx):
             if len(cur) == k:
-                self.__res.append(list(cur))
+                res.append(cur)
                 return
             if idx > n:
                 return
-            cur.append(idx)
-            __combine(cur, idx + 1)
-            cur.pop()
+            __combine(cur+[idx], idx + 1)
             __combine(cur, idx + 1)
 
         __combine([], 1)
-        return self.__res
+        return res
 
 
 if __name__ == '__main__':

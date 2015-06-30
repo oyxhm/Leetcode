@@ -11,11 +11,11 @@ class Solution:
     # @param {integer} n
     # @return {string[]}
     def generateParenthesis(self, n):
-        self.__res = []
+        res = []
 
         def __generateParentheses(num_left, num_unmatched_left, cur_str):
             if num_left == n and not num_unmatched_left:
-                self.__res.append(cur_str)
+                res.append(cur_str)
                 return
             if num_left < n:
                 __generateParentheses(num_left + 1, num_unmatched_left + 1, cur_str + '(')
@@ -23,7 +23,7 @@ class Solution:
                 __generateParentheses(num_left, num_unmatched_left - 1, cur_str + ')')
 
         __generateParentheses(0, 0, "")
-        return self.__res
+        return res
 
 
 if __name__ == '__main__':

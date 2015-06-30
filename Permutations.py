@@ -11,18 +11,18 @@ class Solution:
     # @param {integer[]} nums
     # @return {integer[][]}
     def permute(self, nums):
-        self.__res = []
+        res = []
 
         def __permute(nums, idx):
             if idx == len(nums) - 1:
-                self.__res.append(list(nums))
+                res.append(list(nums))
             for i in xrange(idx, len(nums)):
                 nums[i], nums[idx] = nums[idx], nums[i]
                 __permute(nums, idx + 1)
                 nums[i], nums[idx] = nums[idx], nums[i]
 
         __permute(nums, 0)
-        return self.__res
+        return res
 
     def permuteBFS(self, nums):
         if not nums:
