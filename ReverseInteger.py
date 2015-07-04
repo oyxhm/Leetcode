@@ -20,18 +20,18 @@ class Solution:
     # @param {integer} x
     # @return {integer}
     def reverse(self, x):
-        if (x < 0):
+        if x < 0:
             return -1 * self.reverse(-x)
-        result = x % 10
-        rest = x / 10
-        limit = 2147483647 / 10
-        while rest > 0:
-            if result > limit:
+        res = x % 10
+        remainder = x / 10
+        MAX = (2 ** 31 - 1) / 10
+        while remainder > 0:
+            if res > MAX:
                 return 0
-            result *= 10
-            result += rest % 10
-            rest /= 10
-        return result
+            res *= 10
+            res += remainder % 10
+            remainder /= 10
+        return res
 
 
 if __name__ == '__main__':
