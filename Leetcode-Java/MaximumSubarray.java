@@ -32,6 +32,46 @@ public class MaximumSubarray {
         return globalMax;
     }
 
+
+    /* divide and conquer
+     * 1. If the maximum subarray is in the left half or in the right half, return the maximum subarray of the left half
+     *    or the right half.
+     * 2. If the maximum subarray crosses the mid element, then the maximum subarray is the maximum suffix of the left
+     *    half plus the maximum prefix of the right half.
+     */
+    public static int maxSubArray2(int[] nums) {
+        return maxSubArray(nums, 0, nums.length - 1);
+    }
+
+    private static int maxSubArray(int[] nums, int left, int right) {
+        if (left > right) {
+            return 0;
+        }
+        if (left == right) {
+            return nums[left];
+        }
+        int mid = left + (right - left) / 2;
+        int maxLeft = maxSubArray(nums, left, mid);
+        int maxRight = maxSubArray(nums, mid + 1, right);
+
+        int leftMax = nums[mid];
+        int leftSum = 0;
+        for (int i = mid; i >= left; i--) {
+            leftSum += nums[i];
+            leftMax = Math.max(leftSum, leftMax);
+        }
+
+        int rightMax = nums[mid + 1];
+        int rightSum = 0;
+        for (int i = mid + 1; i <= right; i++) {
+            rightSum += nums[i];
+            rightMax = Math.max(rightSum, rightMax);
+        }
+
+        int maxAcrossMid = leftMax + rightMax;
+        return Math.max(Math.max(maxLeft, maxRight), maxAcrossMid);
+    }
+
     public static void main(String[] args) {
         int max = maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4});
     }

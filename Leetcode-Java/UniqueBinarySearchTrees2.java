@@ -26,7 +26,7 @@ public class UniqueBinarySearchTrees2 {
     public static List<TreeNode> generateTree(int left, int right) {
         List<TreeNode> res = new ArrayList<TreeNode>();
         if (left > right) {
-            res.add(null);
+            res.add(null); // 注意，这里一定要加null. 不加null的话，下一递归中for循环会跳过去
             return res;
         }
         for (int i = left; i <= right; i++) {
