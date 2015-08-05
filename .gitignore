@@ -1,5 +1,6 @@
 *.DS_Store
-/.idea
+.idea/
 *.pyc
-/out
+out/
+*.iml
 *.class
