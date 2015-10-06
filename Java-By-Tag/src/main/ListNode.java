@@ -10,4 +10,16 @@ public class ListNode {
     public ListNode(int x) {
         val = x;
     }
+
+    @Override
+    public String toString() {
+        String ret = "[";
+        ListNode cur = this;
+        while (cur != null) {
+            ret += cur.val + " ";
+            cur = cur.next;
+        }
+        ret += ret.substring(0, ret.length() - 1) + "]";
+        return ret;
+    }
 }
